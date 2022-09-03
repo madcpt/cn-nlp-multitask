@@ -15,4 +15,9 @@ see `step2-train_ner.py`
 
 1. source of labeled data: [CLUENER2020](https://github.com/CLUEbenchmark/CLUENER2020);
 2. extract entities with label `gov`;
-3. 
+3. train NER pipeline based on [spacy's `zh_core_web_md` model](https://spacy.io/models/zh#zh_core_web_md);
+
+To avoid training upon each deployment, I have trained and dumpped the model in `saved_model.zip` (tracked and managed by git-lfs).
+
+
+
