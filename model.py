@@ -2,16 +2,19 @@ import spacy
 
 nlp = spacy.load('./saved_model')
 
-def get_segment(sentence):
+def get_segment(sentence: str) -> [str]:
     doc = nlp(sentence)
     return [t.text for t in doc]
 
-    # for t in doc:
-    #     print(t.text, '\t', t.pos_, '\t', t.dep_, '\t', t.tag_, '\t', t.idx, '\t', t.i)
 
-    # for named_entity in doc.ents:
-    #     print(named_entity, named_entity.label_, named_entity.start, named_entity.end, named_entity.start_char)
-    #     print(doc[named_entity.start])
-    #     print(doc.text[named_entity.start_char])
-    #     # print(doc[named_entity.sent.start_char])
+def recognize_gov_entities(sentence: str) -> [dict]:
+    doc = nlp(sentence)
+    entities = []  # example: [{entity: “公安部门”, beginning_position: 0}] 
+    for named_entity in doc.ents:
+        if named_entity.label_ == 'gov':
+            entities.append({
+                'entity': named_entity.text,
+                'begining_position': named_entity.start_char,
+            })
+    return entities
 

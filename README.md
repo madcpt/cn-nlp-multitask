@@ -10,8 +10,13 @@
 ### HTML parsing and database
 see `scripts/step1-build_database.ipynb`
 
+
+### Word Segmentation
+Word segmentation is directed built from [spacy's `zh_core_web_md` model](https://spacy.io/models/zh#zh_core_web_md).
+
+
 ### NER on goverment departments
-see `step2-train_ner.py`
+train code pls refer to `step2-train_ner.py`
 
 1. source of labeled data: [CLUENER2020](https://github.com/CLUEbenchmark/CLUENER2020);
 2. extract entities with label `gov`;
