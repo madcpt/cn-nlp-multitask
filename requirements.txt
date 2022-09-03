@@ -4,3 +4,4 @@ httptools==0.1.2
 uvicorn==0.11.3
 fastapi==0.81.0
 databases[sqlite]
+spacy==2.3.0
