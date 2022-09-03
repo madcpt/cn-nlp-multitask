@@ -25,4 +25,7 @@ train code pls refer to `step2-train_ner.py`
 To avoid training upon each deployment, I have trained and dumpped the model in `saved_model.zip` (tracked and managed by git-lfs).
 
 
+### Identify action, the object of the action, and the modifier of the object given the subject is a department.
+
+[dependency parsing](https://web.stanford.edu/~jurafsky/slp3/14.pdf)
 

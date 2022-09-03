@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile, File, Form, Request
 from fastapi.middleware.cors import CORSMiddleware
 from databases import Database
 
-from model import get_segment, recognize_gov_entities
+from model import get_segment, recognize_gov_entities, extract_components_from_sentence
 
 
 app = FastAPI()
@@ -53,4 +53,14 @@ async def fetch_ner(request: Request):
             pass
     return {"entities": entities}
 
-recognize_gov_entities
+@app.post("/dep")
+async def fetch_dep(request: Request):
+    data = await request.json()
+    print(data)
+    components = []
+    if 'sentence' in data:
+        try:
+            components = extract_components_from_sentence(data['sentence'])
+        except:
+            pass
+    return {"components": components}
