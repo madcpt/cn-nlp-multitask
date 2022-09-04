@@ -2,7 +2,6 @@
     "options": {
         "memory": "2Gi",
         "cpu": "2",
-        "port": 8080,
-        "max-instances": 10
+        "port": 8080
     }
 }
