@@ -69,7 +69,7 @@ Everything related is packed and well-annotated in `model/finetune_ner.py`. Key 
 - `_dependency_analysis`;
 - `extract_components_from_root`;
 
-## Error Analysis
+#### Error Analysis and Ideas
 In the following example, SEG and NER looks fine, but failed to find action, object and modifer:
 ```
 Input: 公安部门依法打击利用黑客手段提供有偿“刷课”服务违法犯罪活动
@@ -86,6 +86,11 @@ TASK2: NER {'entities': [{'entity': '公安部门', 'beginning_position': 0}]}
 TASK3: DEP {'components': [{'action': '打击', 'action_position': 6, 'object': '违法犯罪活动', 'object_position': 15, 'modifier': '利用黑客手段的', 'modifier_position': 8}]}
 ```
 
-The dependency tree looks like:
+The dependency tree of original sentence looks like:
+<img src="./img/dep1.svg"/>
 
-[dep](./img/dep.svg)
+and for the modified sentence:
+<img src="./img/dep2.svg"/>
+
+In the original version, '利用' is a direct child of '打击', with dependency `ccomp` (meaning 'clausal complement'). Obviously, the dependency parser treated '打击利用' as a clause. Besides, '提供' is treated as `conj` (conjunct) of '打击', which is also not correct.
+
