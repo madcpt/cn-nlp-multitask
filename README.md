@@ -1,8 +1,10 @@
 # mini-project on Chinese NLP
 
+[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run)
+
 ## containerized http service
 
-`docker build -t nlp:v1 . && docker run --rm -it --name nlp-service -p 0.0.0.0:8001:8001 nlp:v1`
+`docker build -t nlp:v1 . && docker run --rm -it --name nlp-service -p 0.0.0.0:8080:8080 nlp:v1`
 
 ### mock API requests
 

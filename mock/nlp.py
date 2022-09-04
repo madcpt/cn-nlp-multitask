@@ -1,7 +1,7 @@
 import requests
 
 
-base_url = 'http://127.0.0.1:8001'
+base_url = 'http://127.0.0.1:8080'
 
 for test_sent in [
     '国务院关税税则委员会按程序决定，对相关商品延长排除期限。',

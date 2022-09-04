@@ -1,7 +1,7 @@
 import requests
 
 
-base_url = 'http://127.0.0.1:8001'
+base_url = 'http://127.0.0.1:8080'
 
 x = requests.get(base_url + '/article?id=1')
 print('Query id=1', x.json())
