@@ -22,13 +22,33 @@ async def database_disconnect():
 async def root():
     return {"message": "Hello World"}
 
-@app.post("/article")
+# insert record
+@app.post("/insert")
+async def insert_data(request: Request):
+    data = await request.json()
+    assert 'title' in data
+    print('inserting data', data)
+    result = await database.execute(
+        query="INSERT INTO articles(title, publish_date, content)\
+               VALUES (:title, :publish_date, :content)",
+        values={
+            'title': data['title'],
+            'publish_date': data.get('publish_date', ''),
+            'content': data.get('content', ''),
+        })
+    print('new record id =', result)
+    return  result
+
+# query on id
+@app.get("/article")
 async def fetch_data(id: int):
     print('querying id =', id)
     query = "SELECT * FROM articles WHERE id={}".format(str(id))
     result = await database.fetch_one(query=query)
+    print(result)
     return  result
 
+# task1 
 @app.post("/segment")
 async def fetch_segment(request: Request):
     data = await request.json()
@@ -41,6 +61,7 @@ async def fetch_segment(request: Request):
             print(e)
     return {"segment": segments}
 
+# task2
 @app.post("/ner")
 async def fetch_ner(request: Request):
     data = await request.json()
@@ -53,6 +74,7 @@ async def fetch_ner(request: Request):
             print(e)
     return {"entities": entities}
 
+# task3
 @app.post("/dep")
 async def fetch_dep(request: Request):
     data = await request.json()

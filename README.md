@@ -4,6 +4,12 @@
 
 `docker build -t nlp:v1 . && docker run --rm -it --name nlp-service -p 0.0.0.0:8001:8001 nlp:v1`
 
+### mock API requests
+
+**may need to change `base_url` in code**
+
+- `mock/db.py`: tests data insertion and query;
+- `mock/nlp.py`: tests three NLP tasks;
 
 ## Components
 
