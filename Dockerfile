@@ -6,5 +6,6 @@ RUN pip3 install numpy
 RUN pip install -r requirements.txt
 ADD data /data
 ADD app.py /
-ADD model.py /
+ADD nlp_api.py /
+ADD model /model
 CMD uvicorn app:app --port 8001 --host 0.0.0.0

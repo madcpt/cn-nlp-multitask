@@ -13,12 +13,12 @@ for test_sent in [
     print('Sentence', test_sent)
 
     x = requests.post('http://127.0.0.1:8001/segment', json={'sentence': test_sent})
-    print('segment', x.json())
+    print('TASK1: SEG', x.json())
 
     x = requests.post('http://127.0.0.1:8001/ner', json={'sentence': test_sent})
-    print('NER', x.json())
+    print('TASK2: NER', x.json())
 
     x = requests.post('http://127.0.0.1:8001/dep', json={'sentence': test_sent})
-    print('dependency', x.json())
+    print('TASK3: DEP', x.json())
 
     print('-'*50)
